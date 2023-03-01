@@ -16,9 +16,12 @@ const initdb = async () =>
 export const putDb = async (content) => {
   console.log('Text entered');
   const textDb = await openDB('jate',1);
+
   const tx = textDb.transaction('jate', 'readwrite');
-  const store = tx.objectStore('todos');
-  const request = store.put({ id: 1, text: content});
+
+  const store = tx.objectStore('jate');
+
+  const request = store.put({ id: 1, value: content});
   const result = await request;
   console.log('result', result)
 }
